@@ -24,6 +24,8 @@ zh-CN:
   first_name_placeholder: "名字"
   last_name_label: "姓氏："
   last_name_placeholder: "姓氏"
+  name_label: "姓名"
+  name_placeholder: "姓名"
   email_label: "电子邮箱："
   email_placeholder: "电子邮箱"
   password_label: "密码："
@@ -35,3 +37,4 @@ zh-CN:
   message_success_pending: "您已成为测试员，您会在新的测试版本推出时收到邮件通知"
   message_email_exists: "电子邮箱已被注册"
   message_error: "出现了错误，请联系管理员"
+  test_flight_message: "下载TestFlight,进行安装"

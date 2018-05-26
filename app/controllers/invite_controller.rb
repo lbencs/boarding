@@ -1,10 +1,16 @@
 require 'spaceship'
 class InviteController < ApplicationController
   before_action :set_app_details
+  before_action :set_test_flight
   before_action :check_disabled_text
   before_action :check_imprint_url
 
   skip_before_filter :verify_authenticity_token
+
+  before_action :set_locale
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def index
     if boarding_service.user and boarding_service.password
@@ -31,7 +37,7 @@ class InviteController < ApplicationController
     end
     
     email = params[:email]
-    first_name = params[:first_name]
+    first_name = ""
     last_name = params[:last_name]
 
     if ENV["RESTRICTED_DOMAIN"]
@@ -110,6 +116,9 @@ class InviteController < ApplicationController
     def set_app_details
       @metadata = app_metadata
       @title = @metadata[:title]
+    end
+    def set_test_flight
+      @test_flight_url = ENV["TEST_FLIGHT_URL"]
     end
 
     def check_disabled_text

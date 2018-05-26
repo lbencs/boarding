@@ -27,6 +27,8 @@ gem 'http_accept_language', '~> 2.0.5'
 
 gem 'dotenv'
 
+gem 'rails-i18n'
+
 group :production do
   gem 'puma'
   gem 'rails_12factor'

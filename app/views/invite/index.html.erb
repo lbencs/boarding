@@ -25,10 +25,8 @@
     <h4 class="" style="margin-bottom: 40px;"><%= @metadata[:title] %></h4>
 
     <%= form_tag("submit", method: "post", style: "text-align: left", onsubmit: "didSubmit()") do %>
-      <%= label_tag(:first_name, t(:first_name_label)) %>
-      <%= text_field_tag :first_name, '', class: "form-control", placeholder: t(:first_name_placeholder) %><br />
-      <%= label_tag(:last_name, t(:last_name_label)) %>
-      <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:last_name_placeholder) %><br />
+      <%= label_tag(:last_name, t(:name_label)) %>
+      <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:name_placeholder) %><br />
       <%= label_tag(:email, t(:email_label), class: "required") %>
       <%= email_field_tag :email, '', class: "form-control", placeholder: t(:email_placeholder) %><br />
 
@@ -46,15 +44,23 @@
     <% end %>
   <% else %>
     <p class="alert alert-<%= @type %>">
-      <%= @message %>
+      <%= @message %> 
     </p>
+    <% if @test_flight_url && @type == 'success' %>
+        <%= button_to t(:test_flight_message), @test_flight_url, class: 'btn btn-lg btn-primary btn-block', target: "_blank" %>
+    <% end %>   
   <% end %>
 
-  <p class="footer">
+  <p class="footer" style="left: 0px; right: 0px">
+
     <% if @imprint_url %>
       <%= link_to t(:imprint), @imprint_url, target: "_blank" %> |
     <% end %>
-    Powered by <a href="https://fastlane.tools" target="_blank">fastlane</a>
+
+    <% if @test_flight_url %>
+      <%= link_to t(:test_flight_message), @test_flight_url, target: "_blank" %>
+    <% end %>    
+  
   </p>
 </div>
 
